@@ -2,6 +2,6 @@
 <ng-content select="[buttonToogle]"></ng-content>
 <br/>
 <br/>
-<div *ngIf="expanded" [id]="contentID">
+<div *ngIf="expanded()" [id]="contentID">
   <ng-container [ngTemplateOutlet]="conditionalTemplate"></ng-container>
 </div>

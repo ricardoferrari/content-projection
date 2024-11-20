@@ -11,7 +11,7 @@ export class ToggleComponentDirective {
 
   @HostListener('click') toggleContent() {
     console.log('ToggleComponentDirective', this.parentContainer);
-    this.parentContainer.expanded = !this.parentContainer.expanded;
+    this.parentContainer.expanded.update((value) => !value);
   }
 
   constructor() { }
