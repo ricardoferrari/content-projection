@@ -1,0 +1,7 @@
+<h2>Conditional content projection</h2>
+<ng-content select="[buttonToogle]"></ng-content>
+<br/>
+<br/>
+<div *ngIf="expanded" [id]="contentID">
+  <ng-container [ngTemplateOutlet]="conditionalTemplate"></ng-container>
+</div>
