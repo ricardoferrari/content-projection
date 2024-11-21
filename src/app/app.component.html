@@ -7,11 +7,32 @@
     <h2>This is the title</h2>
     <p description>And this is another slot having the description</p>
   </app-multi-slot>
+
   <hr/>
+
   <app-conditional #reflect>
     <button buttonToogle appToggleComponent [parentContainer]="reflect">Toggle</button>
     <ng-template #conditionalTemplate>
-      Conditional projected content
+      <p>Conditional projected content</p>
     </ng-template>
   </app-conditional>
+
+  <hr/>
+
+  <h3>Guarded with context directive.</h3>
+
+  <div *appTemplateGuard="alertMessage; let content = content">
+    <h2>{{ content.title }}</h2>
+    <p>{{ content.message }}</p>
+  </div>
+
+  <hr/>
+
+  <app-template-guard [message]="alertMessage">
+    <ng-template let-message="content.message" let-title="content.title">
+      <h2>{{title}}</h2>
+      <p>{{ message }}</p>
+    </ng-template>
+  </app-template-guard>
+
 </main>

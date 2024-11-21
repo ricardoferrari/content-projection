@@ -11,7 +11,7 @@ let componentCount = 0;
   styleUrl: './conditional.component.scss',
 })
 export class ConditionalComponent {
-  public expanded: WritableSignal<boolean> = signal(false);
+  public expanded: WritableSignal<boolean> = signal(true);
   public contentID = `conditional-${componentCount++}`;
 
   @ContentChild(TemplateRef) conditionalTemplate!: TemplateRef<unknown>;
