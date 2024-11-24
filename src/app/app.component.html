@@ -21,9 +21,10 @@
 
   <h3>Guarded with context directive.</h3>
 
-  <div *appTemplateGuard="alertMessage; let content = content">
-    <h2>{{ content.title }}</h2>
-    <p>{{ content.message }}</p>
+  <div *appTemplateGuard="getMessageContext(); let content = content">
+    <h1>Renderiza ou não</h1>
+    <h2>{{ content?.title }}</h2>
+    <p>{{ content?.message }}</p>
   </div>
 
   <hr/>

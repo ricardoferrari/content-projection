@@ -4,7 +4,9 @@ import { MultiSlotComponent } from "./multi-slot/multi-slot.component";
 import { ConditionalComponent } from "./conditional/conditional.component";
 import { ToggleComponentDirective } from './toggle-component.directive';
 import { TemplateGuardComponent } from './template-guard/template-guard.component';
-import { AlertMessage, TemplateGuardDirective } from './template-guard.directive';
+import { AlertMessage, TemplateGuardContext, TemplateGuardDirective } from './template-guard.directive';
+
+let contextCount = 0;
 
 @Component({
   selector: 'app-root',
@@ -26,5 +28,12 @@ export class AppComponent {
   alertMessage: AlertMessage = {
     message: 'Hello from the context',
     title: 'Context message',
+  };
+
+  getMessageContext(): TemplateGuardContext {
+    return {
+      $implicit: `alert-message-${contextCount++}`,
+      content: this.alertMessage
+    } as TemplateGuardContext;
   };
 }

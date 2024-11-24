@@ -10,30 +10,20 @@ export interface TemplateGuardContext {
   content: AlertMessage;
 }
 
-let contextCount = 0;
-
 @Directive({
   selector: '[appTemplateGuard]',
   standalone: true
 })
 export class TemplateGuardDirective<T extends TemplateGuardContext> {
 
-  @Input() appTemplateGuard!: AlertMessage;
+  @Input() appTemplateGuard!: any;
 
   constructor(private templateRef: TemplateRef<T>, private viewContainerRef: ViewContainerRef) {}
 
   ngOnInit() {
 
     if (this.appTemplateGuard) {
-      const context: TemplateGuardContext = {
-        $implicit: `alert-message-${contextCount++}`,
-        content: {
-          title: this.appTemplateGuard.title,
-          message: this.appTemplateGuard.message
-        }
-      };
-
-      this.viewContainerRef.createEmbeddedView(this.templateRef, context);
+      this.viewContainerRef.createEmbeddedView(this.templateRef, this.appTemplateGuard);
     }
 
   }
